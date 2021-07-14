@@ -11,7 +11,7 @@ import {
 import { HubConnectionBuilder, LogLevel } from "@aspnet/signalr";
 import { connect } from 'react-redux'
 import * as Actions from '../redux/actions'
-function Chat({ route }) {
+function Chat({ route, navigation }) {
     const { username, userId, isHost, room } = route.params
     const [localStream, setLocalStream] = useState({ toURL: () => null });
     const [remoteStream, setRemoteStream] = useState({ toURL: () => null });
@@ -137,6 +137,7 @@ function Chat({ route }) {
 
     const handleLeave = () => {
         setRemoteStream({ toURL: () => null });
+        hubConnection.stop();
         stunConnection.close();
     };
 
@@ -144,6 +145,7 @@ function Chat({ route }) {
         send({ type: 'leave' });
         handleLeave();
         setLocalStream(null)
+        navigation.goBack();
     }
 
     const startStopAudio = () => {

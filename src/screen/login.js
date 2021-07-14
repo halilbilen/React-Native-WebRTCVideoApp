@@ -9,7 +9,7 @@ function Login({ navigation }) {
     const [username, setUsername] = useState(Platform.OS === "ios" ? "halil" : "halilandroid");
     const [userId, setUserId] = useState(Platform.OS === "ios" ? "1" : "2");
     const [isHost, setIsHost] = useState(Platform.OS === "ios" ? false : true);
-    const [room, setRoom] = useState(Platform.OS === "ios" ? "test5" : "test");
+    const [room, setRoom] = useState(Platform.OS === "ios" ? "test" : "test");
     return (
         <View style={styles.container}>
             <View style={{ width: "100%", height: 50, borderWidth: 1 }}>
